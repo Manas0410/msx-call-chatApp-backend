@@ -6,7 +6,8 @@ const chatRouter = express.Router();
 chatRouter.get("/:meetingId", (req: Request, res: Response) => {
   const { meetingId } = req.params;
   const messages = data.filter((item) => item.meetingId === meetingId);
-  res.status(200).send(messages);
+  const message = messages[messages.length - 1];
+  res.status(200).send([message]);
 });
 
 chatRouter.post("/", (req: Request, res: Response) => {
